@@ -9,6 +9,12 @@
 #ifndef TNetworkDefine_h
 #define TNetworkDefine_h
 
+#ifdef DEBUG
+#define TLog(...) NSLog(@"%s line number:%d \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define TLog(...)
+#endif
+
 #define TNETWORK_QUEUE_ASYNC(queue, block)\
 if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(queue)) == 0) {\
 block();\
