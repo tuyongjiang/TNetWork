@@ -22,6 +22,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		9130D23625C1484000C6972F /* TDefaultAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9130D23525C1484000C6972F /* TDefaultAPI.m */; };
 		9C3FB1FB7BD2D8A974C24720 /* libPods-TNetWork_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F43DA445D6EB5126009B94 /* libPods-TNetWork_Example.a */; };
 		FE2CA0C74AF4640B1ADD326D /* libPods-TNetWork_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 309481FEE65FE260DB0C33F5 /* libPods-TNetWork_Tests.a */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,8 @@
 		6FC6C17A79401C09A4149C76 /* Pods-TNetWork_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TNetWork_Example.debug.xcconfig"; path = "Target Support Files/Pods-TNetWork_Example/Pods-TNetWork_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9130D23425C1484000C6972F /* TDefaultAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDefaultAPI.h; sourceTree = "<group>"; };
+		9130D23525C1484000C6972F /* TDefaultAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDefaultAPI.m; sourceTree = "<group>"; };
 		94F43DA445D6EB5126009B94 /* libPods-TNetWork_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TNetWork_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4165881DBC3B5998ECF489 /* Pods-TNetWork_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TNetWork_Example.release.xcconfig"; path = "Target Support Files/Pods-TNetWork_Example/Pods-TNetWork_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D8BDC232E045AA99528ECD20 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 		6003F593195388D20070C39A /* Example for TNetWork */ = {
 			isa = PBXGroup;
 			children = (
+				9130D23425C1484000C6972F /* TDefaultAPI.h */,
+				9130D23525C1484000C6972F /* TDefaultAPI.m */,
 				6003F59C195388D20070C39A /* TAppDelegate.h */,
 				6003F59D195388D20070C39A /* TAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -348,6 +353,7 @@
 				6003F59E195388D20070C39A /* TAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* TViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				9130D23625C1484000C6972F /* TDefaultAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

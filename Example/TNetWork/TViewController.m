@@ -7,7 +7,7 @@
 //
 
 #import "TViewController.h"
-
+#import "TDefaultAPI.h"
 @interface TViewController ()
 
 @end
@@ -17,7 +17,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    TDefaultAPI *api = [TDefaultAPI new];
+    [api startRequest:^(TResponse *response) {
+        NSLog(@"%@",response.responseObject);
+    } failure:^(TResponse *response) {
+        NSLog(@"%@",response);
+    }];
+    NSLog(@"1111");
 }
 
 - (void)didReceiveMemoryWarning
