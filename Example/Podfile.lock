@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - TNetWork (0.0.1):
+  - TNetWork (0.0.2):
     - AFNetworking
     - YYCache
   - YYCache (1.0.4)
@@ -33,7 +33,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  TNetWork: 5e4bb058311fbfd19562fef823457c52139a9cf4
+  TNetWork: 934e53362a1f2f4978f50237385376125efdbe64
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
 PODFILE CHECKSUM: a5d8cd51bf9e3efeff73a8d5acc32c3e8204d7fa

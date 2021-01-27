@@ -96,7 +96,7 @@
          } downloadProgress:^(NSProgress *progress) {
              
          } completion:^(TResponse *response) {
-             [self responseFailure:response taskIdentifier:taskIdentifier];
+             [self responseCompletion:response taskIdentifier:taskIdentifier cacheKey:cacheKey];
          }];
      }else{
          __weak typeof(self) this = self;
@@ -107,7 +107,7 @@
          } completion:^(TResponse *response) {
              __strong typeof(this) self = this;
              if(!self)return ;
-             [self responseFailure:response taskIdentifier:taskIdentifier];
+             [self responseCompletion:response taskIdentifier:taskIdentifier cacheKey:cacheKey];
          }];
      }
 
@@ -138,6 +138,9 @@
                [self.delegate requestSuccess:self successWithResponse:response];
            }
            if(self.success){
+               if (DEBUG) {
+                   NSLog(@"%@",response.responseObject);
+               }
                self.success(response);
            }
            if(taskIdentifier){
@@ -148,6 +151,9 @@
                [self.delegate requestSuccess:self successWithResponse:response];
            }
            if(self.success){
+               if (DEBUG) {
+                   NSLog(@"%@",response.responseObject);
+               }
                self.success(response);
            }
            if(taskIdentifier){
@@ -172,6 +178,9 @@
            [self.delegate requestFailure:self failureWithResponse:response];
        }
        if(self.failure){
+           if (DEBUG) {
+               NSLog(@"%@",response.error);
+           }
            self.failure(response);
        }
        if(taskIdentifier){

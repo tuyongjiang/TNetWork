@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 #import "TNetworkDefine.h"
+#import "TResponse.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TBaseRequest : NSObject
