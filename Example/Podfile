@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'TNetWork_Example' do
+  pod 'TNetWork', :path => '../'
+
+  target 'TNetWork_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
