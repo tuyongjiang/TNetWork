@@ -92,18 +92,22 @@
     __block NSNumber *taskIdentifier;
      if(self.releaseStrategy == TNetworkReleaseStrategyHoldRequest){
          taskIdentifier = [[TNetworkManager sharedInstance] sendNetWorkingRequest:self uploadProgress:^(NSProgress *progress) {
-             
+             [self responseUploadProgress:progress];
          } downloadProgress:^(NSProgress *progress) {
-             
+             [self responseDownloadProgress:progress];
          } completion:^(TResponse *response) {
              [self responseCompletion:response taskIdentifier:taskIdentifier cacheKey:cacheKey];
          }];
      }else{
          __weak typeof(self) this = self;
          taskIdentifier = [[TNetworkManager sharedInstance] sendNetWorkingRequest:self uploadProgress:^(NSProgress *progress) {
-             
+             __strong typeof(this) self = this;
+             if(!self)return ;
+             [self responseUploadProgress:progress];
          } downloadProgress:^(NSProgress *progress) {
-             
+             __strong typeof(this) self = this;
+             if(!self)return ;
+             [self responseDownloadProgress:progress];
          } completion:^(TResponse *response) {
              __strong typeof(this) self = this;
              if(!self)return ;
