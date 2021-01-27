@@ -142,9 +142,9 @@
                [self.delegate requestSuccess:self successWithResponse:response];
            }
            if(self.success){
-               if (DEBUG) {
-                   NSLog(@"%@",response.responseObject);
-               }
+#ifdef DEBUG
+               NSLog(@"%@",response.responseObject);
+#endif
                self.success(response);
            }
            if(taskIdentifier){
@@ -155,9 +155,9 @@
                [self.delegate requestSuccess:self successWithResponse:response];
            }
            if(self.success){
-               if (DEBUG) {
-                   NSLog(@"%@",response.responseObject);
-               }
+#ifdef DEBUG
+               NSLog(@"%@",response.responseObject);
+#endif
                self.success(response);
            }
            if(taskIdentifier){
@@ -182,9 +182,9 @@
            [self.delegate requestFailure:self failureWithResponse:response];
        }
        if(self.failure){
-           if (DEBUG) {
-               NSLog(@"%@",response.error);
-           }
+#ifdef DEBUG
+           NSLog(@"%@",response.error);
+#endif
            self.failure(response);
        }
        if(taskIdentifier){
