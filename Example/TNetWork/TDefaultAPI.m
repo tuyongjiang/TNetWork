@@ -24,9 +24,7 @@
 - (TNetWorkRequestType)requestType{
     return TNetWorkRequestTypeGET;
 }
--(TNetworkReleaseStrategy)releaseStrategy{
-    return TNetworkReleaseStrategyWhenRequestDealloc;
-}
+
 -(NSDictionary *)requestParameter{
     return @{@"app":@"eCook",@"appid":@"cn.ecook.ecook",@"device":@"iPhone%206s",@"machine":@"O7a67bcc4f3121ddff51a25c1809f74194f5e7baf",@"terminal":@"3",@"version":@"13.9.3"};
 }

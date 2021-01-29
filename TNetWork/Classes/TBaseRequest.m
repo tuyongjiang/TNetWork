@@ -12,11 +12,11 @@
 #import "TNetworkManager.h"
 #import "TResponse.h"
 #import <pthread/pthread.h>
-#import "TCache.h"
 @interface TBaseRequest ()
 @property (nonatomic , strong) TCache *cache;
 @property (nonatomic , copy) TSuccessBlock success;
 @property (nonatomic , copy) TFailureBlock failure;
+@property (nonatomic , copy) TProgressBlock uploadProgress;
 @property (nonatomic , strong) NSMutableSet<NSNumber *> *taskID;
 @end
 
@@ -48,6 +48,15 @@
 -(void)startRequest:(TSuccessBlock)success failure:(TFailureBlock)failure{
     self.success = success;
     self.failure = failure;
+    [self startRequest];
+}
+
+- (void)startRequest:(TSuccessBlock)success
+      uploadProgress:(TProgressBlock)uploadProgress
+             failure:(TFailureBlock)failure{
+    self.success = success;
+    self.failure = failure;
+    self.uploadProgress = uploadProgress;
     [self startRequest];
 }
 
@@ -120,7 +129,12 @@
 
 #pragma mark - 私有方法
 - (void)responseUploadProgress:(NSProgress *)progress{
-   
+    if(self.uploadProgress){
+        self.uploadProgress(progress);
+    }
+    if(self.delegate && [self respondsToSelector:@selector(requestProgress:uploadProgress:)]){
+        [self.delegate requestProgress:self uploadProgress:progress];
+    }
 }
 - (void)responseDownloadProgress:(NSProgress *)progress{
     
@@ -254,6 +268,7 @@
 - (void)clearRequestBlocks{
     self.success = nil;
     self.failure = nil;
+    self.uploadProgress = nil;
 }
 
 -(TCache *)cache{
@@ -263,3 +278,62 @@
     return _cache;
 }
 @end
+
+
+///打印中文
+#ifdef DEBUG
+@implementation NSDictionary (Log)
+- (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level
+{
+    NSMutableString *mStr = [NSMutableString string];
+    NSMutableString *tab = [NSMutableString stringWithString:@""];
+    for (int i = 0; i < level; i++) {
+        [tab appendString:@"\t"];
+    }
+    [mStr appendString:@"{\n"];
+    NSArray *allKey = self.allKeys;
+    for (int i = 0; i < allKey.count; i++) {
+        id value = self[allKey[i]];
+        NSString *lastSymbol = (allKey.count == i + 1) ? @"":@";";
+        if ([value respondsToSelector:@selector(descriptionWithLocale:indent:)]) {
+
+            [mStr appendFormat:@"\t%@%@ = %@%@\n",tab,allKey[i],[value descriptionWithLocale:locale indent:level + 1],lastSymbol];
+
+        } else {
+
+            [mStr appendFormat:@"\t%@%@ = %@%@\n",tab,allKey[i],value,lastSymbol];
+
+        }
+    }
+    [mStr appendFormat:@"%@}",tab];
+    return mStr;
+}
+
+@end
+
+@implementation NSArray (Log)
+
+- (NSString *)descriptionWithLocale:(nullable id)locale indent:(NSUInteger)level{
+    
+    NSMutableString *mStr = [NSMutableString string];
+    NSMutableString *tab = [NSMutableString stringWithString:@""];
+    for (int i = 0; i < level; i++) {
+        [tab appendString:@"\t"];
+    }
+    [mStr appendString:@"(\n"];
+    for (int i = 0; i < self.count; i++) {
+        NSString *lastSymbol = (self.count == i + 1) ? @"":@",";
+        id value = self[i];
+        if ([value respondsToSelector:@selector(descriptionWithLocale:indent:)]) {
+            [mStr appendFormat:@"\t%@%@%@\n",tab,[value descriptionWithLocale:locale indent:level + 1],lastSymbol];
+        } else {
+            [mStr appendFormat:@"\t%@%@%@\n",tab,value,lastSymbol];
+        }
+    }
+    [mStr appendFormat:@"%@)",tab];
+    return mStr;
+    
+}
+@end
+#endif
+

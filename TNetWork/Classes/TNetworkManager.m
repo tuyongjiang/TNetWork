@@ -66,7 +66,7 @@
     }
     
     NSError *serializationError = nil;
-    NSMutableURLRequest *request = [self.sessionManager.requestSerializer requestWithMethod:[baseRequest requestMethodString] URLString:[baseRequest jointRequestUrlString] parameters:[baseRequest requestParameter] error:&serializationError];
+    NSMutableURLRequest *request = [self.sessionManager.requestSerializer requestWithMethod:[baseRequest requestMethodString] URLString:[baseRequest jointRequestUrlString] parameters:[baseRequest validRequestParameter] error:&serializationError];
     
     if (serializationError) {
         dispatch_async(dispatch_get_main_queue(), ^{

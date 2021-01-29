@@ -6,10 +6,13 @@
 //  Copyright © 2021 涂永江. All rights reserved.
 //
 
+//继承与该类进行网络请求.
+
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 #import "TNetworkDefine.h"
 #import "TResponse.h"
+#import "TCache.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TBaseRequest : NSObject
@@ -18,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma - 发起网络请求
 - (void)startRequest;
 - (void)startRequest:(TSuccessBlock)success failure:(TFailureBlock)failure;
+- (void)startRequest:(TSuccessBlock)success
+            uploadProgress:(TProgressBlock)uploadProgress
+             failure:(TFailureBlock)failure;
 
 #pragma - 代理
 @property (nonatomic , weak) id<TResponseDelegate> delegate;
@@ -35,10 +41,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSTimeInterval requestTimeoutInterval;
 //基础的url
 @property (nonatomic , copy)   NSString *baseUrl;
-//对象是否策略
+//对象回收策略
 @property (nonatomic , assign) TNetworkReleaseStrategy releaseStrategy;
 //网络请求策略
 @property (nonatomic , assign) TNetworkRepeatStrategy  repeatStrategy;
+//缓存对象
+@property (nonatomic , strong , readonly) TCache *cache;
+
 
 #pragma - AF请求和响应解析配置
 @property (nonatomic , strong) AFHTTPRequestSerializer *requestSerializer;

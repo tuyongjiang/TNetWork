@@ -87,6 +87,9 @@ typedef void (^TFailureBlock)(TResponse *response);
 
 - (void)requestFailure:(TBaseRequest *)baseRequest failureWithResponse:(TResponse *)response;
 
+- (void)requestProgress:(TBaseRequest *)baseRequest
+         uploadProgress:(NSProgress *)uploadProgress;
+
 @end
 
 @protocol TResponseReformerDelegate <NSObject>
