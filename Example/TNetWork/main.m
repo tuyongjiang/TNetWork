@@ -8,7 +8,8 @@
 
 @import UIKit;
 #import "TAppDelegate.h"
-
+#import "TPerson.h"
+extern void _objc_autoreleasePoolPrint(void);
 int main(int argc, char * argv[])
 {
     @autoreleasepool {

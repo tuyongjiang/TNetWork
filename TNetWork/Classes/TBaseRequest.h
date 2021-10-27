@@ -47,7 +47,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , assign) TNetworkRepeatStrategy  repeatStrategy;
 //缓存对象
 @property (nonatomic , strong , readonly) TCache *cache;
-
+//是否开启log
+@property (nonatomic , assign) BOOL IsLog;
 
 #pragma - AF请求和响应解析配置
 @property (nonatomic , strong) AFHTTPRequestSerializer *requestSerializer;
