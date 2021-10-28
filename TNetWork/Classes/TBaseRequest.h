@@ -17,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TBaseRequest : NSObject
 
-//1ssd
 #pragma - 发起网络请求
 - (void)startRequest;
 - (void)startRequest:(TSuccessBlock)success failure:(TFailureBlock)failure;
